@@ -1,12 +1,16 @@
+require('dotenv').config()
+
 const express = require('express')
 const querystring = require('querystring')
 const axios = require('axios')
 const cors = require('cors')
 const helmet = require('helmet')
 
+const keys = require('./config/keys')
+
 const body = { "grant_type": "client_credentials" }
 
-const authorization = "Basic Y2YxOTcyZGE0MzI5NGIxYjhlZmI3ZmFmZWRmOTBiMGE6MjM3YjI3YjI2MmE1NGY3YjljNjAwNzk3MzJlMWJjMTg="
+const authorization = `Basic ${keys.SpotifyAuth}`
 const contentType = "application/x-www-form-urlencoded"
 
 const app = express()
@@ -35,5 +39,5 @@ app.get('/', async (req, res) => {
 
 
 
-const PORT = 4000
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => console.log(`Server is up on port ${PORT}`))

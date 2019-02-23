@@ -5,11 +5,13 @@
   "author": "Rafael Buzatto de Campos",
   "license": "MIT",
   "scripts": {
-    "server": "nodemon src/index.js"
+    "start": "node index.js",
+    "server": "nodemon index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "helmet": "^3.15.1",
     "querystring": "^0.2.0"
