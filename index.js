@@ -1,12 +1,14 @@
 require('dotenv').config()
 
-const express = require('express')
+const express     = require('express')
 const querystring = require('querystring')
-const axios = require('axios')
-const cors = require('cors')
-const helmet = require('helmet')
+const axios       = require('axios')
+const cors        = require('cors')
+const helmet      = require('helmet')
+const bodyParser = require('body-parser')
 
 const keys = require('./config/keys')
+const authRoutes = require('./routes/auth')
 
 const body = { "grant_type": "client_credentials" }
 
@@ -15,8 +17,11 @@ const contentType = "application/x-www-form-urlencoded"
 
 const app = express()
 
+app.use(bodyParser.json())
 app.use(helmet())
 app.use(cors())
+
+app.use('/', authRoutes)
 
 app.get('/', async (req, res) => {
     const response = await axios.post('https://accounts.spotify.com/api/token',
