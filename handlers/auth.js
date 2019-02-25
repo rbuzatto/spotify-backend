@@ -8,9 +8,8 @@ exports.login = async function(req, res) {
     // finding a user
     try {
         const user = await db.User.findOne({
-            email: req.body.email
+            username: req.body.username
         })
-    
         let { id, username } = user
         const isMatch = await user.comparePassword(req.body.password)
 
