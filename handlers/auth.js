@@ -18,11 +18,11 @@ exports.login = async function(req, res) {
     
             return res.status(200).json({ id, username, token })
         } else {
-            return res.status(400).send('Invalid Email or Password')
+            return res.status(400).send('Invalid Username or Password')
         }
         
     } catch (error) {
-        return res.status(400).send('Invalid Email or Password')
+        return res.status(400).send('Invalid Username or Password')
     }
 
 }
@@ -42,6 +42,6 @@ exports.signup = async function(req, res){
 
     } catch (error) {
         console.log(error)
-        return res.status(400).json({error: 'username and/or email is already taken'})
+        return res.status(400).json({error: 'username is already taken'})
     }
 }
